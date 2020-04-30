@@ -1,3 +1,5 @@
+# This model is trained with LEIP SDK.
+
 # MNIST dataset
 
 This code uses the built-in data library MNIST.
