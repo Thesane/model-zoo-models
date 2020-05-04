@@ -63,7 +63,7 @@ def evaluate(args):
     file_object = open(args.basedirectory +'/EvalIndex.txt', 'a')
     input_tensor = sess.graph.get_tensor_by_name('Placeholder:0')
     # the main loop
-    output = sess.graph.get_tensor_by_name('dense_2/MatMul:0')
+    output = sess.graph.get_tensor_by_name('Softmax')
     for image_path in image_paths:
         image = imageio.imread(image_path)
         image = np.expand_dims(image,axis=2)
@@ -118,7 +118,7 @@ def evaluateMNIST(args):
     y_train = keras.utils.to_categorical(y_train, 10)
     y_test = keras.utils.to_categorical(y_test, 10)
     input_tensor = sess.graph.get_tensor_by_name('Placeholder:0')
-    output = sess.graph.get_tensor_by_name('dense_2/MatMul:0')
+    output = sess.graph.get_tensor_by_name('Softmax:0')
     dict_eval = {input_tensor : x_train}
     train_prediction = sess.run(output, feed_dict = dict_eval)
     

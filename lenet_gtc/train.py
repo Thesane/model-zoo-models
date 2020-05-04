@@ -202,12 +202,12 @@ def main():
         for e in range(args.num_epochs):
 
             test_average = {}
-            test_average['lp_accuracy', 'dense_2'] = []
-            test_average['hp_accuracy', 'dense_2'] = []
+            test_average['lp_accuracy', 'flatten_1'] = []
+            test_average['hp_accuracy', 'flatten_1'] = []
             test_average['total_loss', 'total_loss'] = []
             test_average['bit_loss'] = []
-            test_average['distillation_loss', 'dense_2'] = []
-            test_average['hp_cross_entropy', 'dense_2'] = []
+            test_average['distillation_loss', 'flatten_1'] = []
+            test_average['hp_cross_entropy', 'flatten_1'] = []
             test_average['regularization_term'] = []
 
             for x_batch, y_batch in datagen.flow(
