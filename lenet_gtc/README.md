@@ -58,20 +58,7 @@ will load HP model and run it on mnist test set, producing a list of results. Yo
 # Demo.py
 To demonstrate how the models work on a file, use
 ```
-<<<<<<< HEAD
 python3 demo.py --image_file mnist_examples/images/eight/eight.jpg  --input_model pretrained_models/int_model/
-=======
-leip evaluate --framework tf --input_path ./HPcompressed/model_save/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
->>>>>>> 070d1b9be6d843b2e45b27e49672b3e758f48be6
 ```
 It will load pretrained model and apply to a 28x28 image.
-
-<<<<<<< HEAD
-=======
-We can also check that the compiled models work as follows (notice the change in framework `tf2->tvm` and the input_path directory):
-```
-leip evaluate --framework lre --input_path ./HPcompiled/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
-```
-or with `LPcompiled` instead of `HPcompiled`.
->>>>>>> 070d1b9be6d843b2e45b27e49672b3e758f48be6
 
