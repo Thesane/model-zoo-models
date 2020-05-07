@@ -84,14 +84,14 @@ The MNIST dataset needs to be reformatted for eval, the script `create_data.py d
 
 Checking the compressed models for HPcompressed:
 ```
-leip evaluate --framework tf2 --input_path ./HPcompressed/model_save/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
+leip evaluate --framework tf --input_path ./HPcompressed/model_save/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
 ```
 Now it is possible to check that each one of the earlier created models works. Instead of the directory
 `HPcompressed/model_save/` insert `LPcompressed/model_save/`, `training_model_final/` or `int_model_final/`.
 
 We can also check that the compiled models work as follows (notice the change in framework `tf2->tvm` and the input_path directory):
 ```
-leip evaluate --framework tvm --input_path ./HPcompiled/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
+leip evaluate --framework lre --input_path ./HPcompiled/ --test_path ../../mnist_examples/index.txt --class_names ../../mnist_examples/class_names.txt --task=classifier --dataset=custom --input_names Placeholder --output_names Softmax --input_shapes 1,28,28 --preprocessor rgbtogray
 ```
 or with `LPcompiled` instead of `HPcompiled`.
 
