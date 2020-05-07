@@ -240,6 +240,7 @@ parser.add_argument('--n_images', help='Model checkpoints', default=100)
 args = parser.parse_args()
 
 create_files_for_evaluation(args)
+print('eval here')
 iouThreshold = args.iouThreshold
 
 # Arguments validation

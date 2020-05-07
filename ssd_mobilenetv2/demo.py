@@ -15,10 +15,7 @@ from ssd_layers import PriorBox
 from ssd_training import MultiboxLoss
 from ssd_utils import BBoxUtility
 
-voc_classes = ['Aeroplane', 'Bicycle', 'Bird', 'Boat', 'Bottle',
-               'Bus', 'Car', 'Cat', 'Chair', 'Cow', 'Diningtable',
-               'Dog', 'Horse', 'Motorbike', 'Person', 'Pottedplant',
-               'Sheep', 'Sofa', 'Train', 'Tvmonitor']
+voc_classes = ['Aeroplane', 'Bicycle', 'Bird', 'Boat', 'Bottle', 'Bus', 'Car', 'Cat', 'Chair', 'Cow', 'Diningtable', 'Dog', 'Horse', 'Motorbike', 'Person', 'Pottedplant', 'Sheep', 'Sofa', 'Train', 'Tvmonitor']
 
 
 def restore_tf_checkpoint(conf, sess):

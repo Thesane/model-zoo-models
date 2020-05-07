@@ -10,7 +10,7 @@ import os
 import glob
 import shutil
 
-from x86_compile_ssd import build
+# from x86_compile_ssd import build
 from x86_prepare_eval_data import X86_Model
 
 # Validate formats

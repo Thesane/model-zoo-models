@@ -280,8 +280,8 @@ if __name__ == '__main__':
 
         nb_epoch = sets['epochs']
         history = model.fit_generator(gen.generate(True), epochs=nb_epoch,
-                                      steps_per_epoch=int((train_steps / 15)), verbose=1,
-                                      callbacks=callbacks,
+                                      steps_per_epoch=int((train_steps / 1)), verbose=1,
+                                      # callbacks=callbacks,
                                       validation_data=gen.generate(False),
                                       validation_steps=int((val_steps / 5)),
                                       workers=1)

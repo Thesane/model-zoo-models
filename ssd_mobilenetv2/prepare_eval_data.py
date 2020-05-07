@@ -22,14 +22,18 @@ from tensorflow.keras.applications.imagenet_utils import preprocess_input
 def restore_tf_checkpoint(conf, sess, checkpoint=None):
     if not checkpoint:
         print('tf version: {}'.format(tf.__version__))
+        print('LOAD KERAS VERSION')
         sess.run(tf.compat.v1.initialize_all_variables())
         model = tf.keras.models.load_model(conf['tf_model_path'] + '/saved_model.h5',
                                    custom_objects={
                                        'PriorBox': PriorBox,
                                        'compute_loss': MultiboxLoss(21, neg_pos_ratio=2.0).compute_loss
                                    })
+        # model.load_weights(conf['tf_model_path'] + '/weiImage.openghts.75-2.91.hdf5')
+        # model.load_weights('weights' + '/MobileNetV2SSD300Lite_p05-p84.hdf5')
         return model
     else:
+        print('LOAD TF checkpoints')
         # predictions_target
         sess.run(tf.compat.v1.initialize_all_variables())
         tf_meta_path = glob('{}/*.meta'.format(checkpoint))[0]
@@ -47,7 +51,7 @@ def restore_tf_checkpoint(conf, sess, checkpoint=None):
         }
 
 
-def create_files_for_evaluation(args, n_images=200):
+def create_files_for_evaluation(args, n_images=5000):
     NUM_CLASSES = 21
     THRESHOLD = 0.6
     CLASSES = ['Aeroplane', 'Bicycle', 'Bird', 'Boat', 'Bottle',
@@ -99,15 +103,20 @@ def create_files_for_evaluation(args, n_images=200):
         start_index = 0
         print('Start computing batches')
 
-        for end_index in tqdm(range(img_per_batch, inputs.shape[0] + 1, img_per_batch)):
+        for end_index in tqdm(range(img_per_batch, inputs.shape[0] + 4, img_per_batch)):
             if not args.model_checkpoints:
                 preds = tf_inference.predict(inputs[start_index:end_index, :])
             else:
                 preds = tf_inference['sess'].run(fetches=tf_inference['out'], feed_dict={
                     tf_inference['in']: inputs[start_index:end_index, :]
                 })
+            # if end_index % 100 == 0:
+            #     print('end index: {} start index: {}'.format(end_index, start_index))
             results.extend(bbox_util.detection_out(preds))
             start_index = end_index
+
+        print('last end index: {} start index: {}'.format(end_index, start_index))
+        print('results: {}'.format(len(results)))
 
         for i, img in tqdm(enumerate(images)):
             # Parse the outputs.
@@ -150,9 +159,14 @@ def create_files_for_evaluation(args, n_images=200):
             result_detections.append(detections)
 
         print('Test images: {}'.format(len(result_images)))
+        print('result_detections: {}'.format(len(result_detections)))
 
         model_predictions = []
         MODEL_PREDICTION_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'model_evaluation/model_prediction/')
+
+        for f in glob(MODEL_PREDICTION_PATH + '*'):
+            os.remove(f)
+
         predicted_images = []
 
         for index, image_filename in tqdm(enumerate(result_images)):
