@@ -1,0 +1,9 @@
+{
+    "dataset": "custom",
+    "input_names": "Placeholder",
+    "input_shapes": "1,28,28,1",
+    "output_names": "Softmax",
+    "preprocessor": "rgbtogray",
+    "class_names" : "mnist_examples/class_names.txt",
+    "task": "classifier"
+}
