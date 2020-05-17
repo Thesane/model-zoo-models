@@ -26,6 +26,7 @@ import tensorflow.compat.v1 as tf
 
 import input_data
 import tf_audio_models as models
+from sklearn.metrics import confusion_matrix
 
 FLAGS = None
 
@@ -136,8 +137,25 @@ def main(_):
             total_conf_matrix = conf_matrix
         else:
             total_conf_matrix += conf_matrix
-    tf.logging.info('Confusion Matrix:\n %s' % (total_conf_matrix))
-    tf.logging.info('Final test accuracy = %.1f%% (N=%d)' %
+    import pdb
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np
+
+    row_sums = total_conf_matrix.sum(axis=1)
+    total_conf_matrix = total_conf_matrix / row_sums[:, np.newaxis]
+    total_conf_matrix = total_conf_matrix.round(2)
+
+    df_cm = pd.DataFrame(total_conf_matrix, index=[i for i in audio_processor.words_list],
+                         columns=[i for i in audio_processor.words_list])
+    plt.figure(figsize=(15, 7))
+    sns_plot = sns.heatmap(df_cm, annot=True, annot_kws={"size": 5})
+    sns_plot.figure.savefig("eval_conf_matrix.png")
+
+
+    tf.compat.v1.logging.info('Confusion Matrix:\n %s' % (total_conf_matrix))
+    tf.compat.v1.logging.info('Final test accuracy = %.1f%% (N=%d)' %
                               (total_accuracy * 100, set_size))
 
 

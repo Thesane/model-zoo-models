@@ -4,7 +4,7 @@ Start by cloning this repo:
 * ```git clone https://github.com/latentai/model-zoo-models.git```
 * ```cd audio_recognition```
 
-Once this repo is cloned locally, you can use the following commands to explore LEIP framework:
+Once this repo is cloned locally, you can use the following commands to explore LEIP framework:/home/vhamolya/Projects/model-zoo-models/audio_recognition/datasets/google-speech-commands/v0.02_noise_100_std
 
 # Download dataset
 ```bash

@@ -170,6 +170,7 @@ def main(_):
 
     if not FLAGS.is_test:
         training_steps_max = np.sum(training_steps_list)
+        print('Total steps: {}'.format(training_steps_max))
         for training_step in range(start_step, training_steps_max + 1):
             # Figure out what the current learning rate is.
             training_steps_sum = 0
