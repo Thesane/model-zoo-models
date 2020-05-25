@@ -116,6 +116,29 @@ def main(_):
         tf.logging.info(
             'Checkpoint: {}'.format(FLAGS.checkpoint))
 
+    import seaborn as sns
+
+    # var = [v for v in tf.trainable_variables() if v.name == "second_weights:0"][0]
+    # ax = sns.distplot(var.eval())
+    # ax.set_title('baseline_second_weights', size=20)
+    # fig = ax.get_figure()
+    # fig.savefig('zoo tf-baseline second_weights.png')
+
+    # var = [v for v in tf.trainable_variables() if v.name == "first_weights:0"][0]
+    # ax = sns.distplot(var.eval())
+    # ax.set_title('baseline_first_weights', size=20)
+    # fig = ax.get_figure()
+    # fig.savefig('zoo tf-baseline baseline_first_weights.png')
+
+
+    var = [v for v in tf.trainable_variables() if v.name == "final_fc_weights:0"][0]
+    ax = sns.distplot(var.eval())
+    ax.set_title('final_fc_weights', size=20)
+    fig = ax.get_figure()
+    fig.savefig('zoo tf-baseline final_fc_weights.png')
+
+    import pdb
+    pdb.set_trace()
     tf.logging.info('Training from step: {}'.format(start_step))
 
     set_size = audio_processor.set_size('testing')

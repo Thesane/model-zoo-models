@@ -61,6 +61,11 @@ leip evaluate --output_path audio-recognition-evaluate-variants/baselineFp32Resu
 ```bash
 leip compress --input_path workspace/models/audio-recognition/tf-baseline --quantizer ASYMMETRIC --bits 8 --output_path audio-recognition-evaluate-variants/checkpointCompressed/
 ```
+
+### Evaluate compressed model
+```
+python eval.py  --checkpoint audio-recognition-evaluate-variants/checkpointCompressed/model_save/new_model --data_dir workspace/datasets/google-speech-commands/train_noise_500_std/ --wanted_words tree,three,go,dog,no,on,bed,seven,left,zero,stop
+```
 ### LRE FP32 (baseline)
 ```bash
 mkdir audio-recognition-evaluate-variants/compiled_lre_fp32
