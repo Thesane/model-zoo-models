@@ -47,14 +47,6 @@ This runs inference on a single image.
 # LEIP SDK Post-Training-Quantization Commands on Pretrained Models
 ## Open Image 10 Classes Dataset
 
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   88.15|                 15.11|              89.3|               100|
-|LRE FP32 (baseline)|                   87.24|                 21.32|              89.3|               100|
-|LRE FP32 (storage) |                   21.86|                 20.48|              89.3|               100|
-|LRE Int8 (full)    |                   21.86|                  9.55|              90.0|               100|
-
-
 ### Preparation
 ```bash
 leip zoo download --model_id inceptionv3 --variant_id keras-open-images-10-classes
@@ -95,12 +87,6 @@ leip evaluate --output_path inceptionv3-oi/tfliteOutput/model_save/binuint8 --fr
 ```
 
 ## Imagenet Dataset
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   96.26|                 22.27|              68.0|              90.3|
-|LRE FP32 (baseline)|                   95.36|                 31.42|              68.0|              90.3|
-|LRE FP32 (storage) |                   23.88|                 32.18|              68.4|              88.7|
-|LRE Int8 (full)    |                   23.89|                 11.32|              64.2|              87.7|
 
 ### Preparation
 ```bash

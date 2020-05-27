@@ -38,13 +38,6 @@ This command will output the prediction of word "cat".
 
 # LEIP SDK Post-Training-Quantization Commands on Pretrained Models
 
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                    8.73|                 20.08|              78.0|              97.1|
-|LRE FP32 (baseline)|                    8.73|                 72.81|              82.9|              96.9|
-|LRE FP32 (storage) |                    2.18|                 71.34|              82.9|              96.8|
-|LRE Int8 (full)    |                    2.18|                 59.44|              48.9|              76.2|
-
 ### Preparation
 ```bash
 leip zoo download --model_id audio-recognition --variant_id tf-baseline

@@ -39,14 +39,7 @@ This runs inference on a single image.
 ```
 # LEIP SDK Post-Training-Quantization Commands on Pretrained Models
 
-Open Image 10 Classes Commands
-
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   58.95|                 16.21|              80.0|              99.3|
-|LRE FP32 (baseline)|                   58.88|                  6.44|              80.0|              99.3|
-|LRE FP32 (storage) |                   14.72|                  6.67|              80.0|              99.3|
-|LRE Int8 (full)    |                   14.74|                  2.18|              69.3|              97.3|
+##  Open Image 10 Classes Commands
 
 ### Preparation
 ```bash
@@ -87,14 +80,7 @@ leip compile --input_path vgg16-oi/tfliteOutput/model_save/inference_model.cast.
 leip evaluate --output_path vgg16-oi/tfliteOutput/model_save/binuint8 --framework lre --input_types=uint8 --input_path vgg16-oi/tfliteOutput/model_save/binuint8 --test_path workspace/datasets/open-images-10-classes/eval/index.txt --class_names workspace/models/vgg16/keras-open-images-10-classes/class_names.txt --preprocessor ''
 ```
 
-Imagenet Commands
-
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   553.5|                 10.52|              68.8|              90.8|
-|LRE FP32 (baseline)|                   553.4|                  7.00|              68.8|              90.8|
-|LRE FP32 (storage) |                   138.4|                  6.98|              68.8|              91.2|
-|LRE Int8 (full)    |                   138.4|                  2.24|              42.6|              77.5|
+## Imagenet Commands
 
 ### Preparation
 ```bash

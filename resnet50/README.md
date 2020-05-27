@@ -39,13 +39,7 @@ This runs inference on a single image.
 ```
 # LEIP SDK Post-Training-Quantization Commands on Pretrained Models
 
-Open Image 10 Classes Commands
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   94.94|                 12.10|              82.0|              99.3|
-|LRE FP32 (baseline)|                   94.24|                 16.66|              82.0|              99.3|
-|LRE FP32 (storage) |                   23.59|                 17.36|              76.7|              99.3|
-
+##  Open Image 10 Classes Commands
 ### Preparation
 ```bash
 leip zoo download --model_id resnetv2-50 --variant_id keras-open-images-10-classes
@@ -85,13 +79,7 @@ leip compile --input_path resnet50-oi/tfliteOutput/model_save/inference_model.ca
 leip evaluate --output_path resnet50-oi/tfliteOutput/model_save/binuint8 --framework lre --input_types=uint8 --input_path resnet50-oi/tfliteOutput/model_save/binuint8 --test_path workspace/datasets/open-images-10-classes/eval/index.txt --class_names workspace/models/resnetv2-50/keras-open-images-10-classes/class_names.txt --preprocessor ''
 ```
 
-Imagenet Commands
-
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                  103.05|                 16.16|              73.6|              92.4|
-|LRE FP32 (baseline)|                  102.35|                 23.50|              73.6|              92.4|
-|LRE FP32 (storage) |                   25.62|                 23.83|              74.0|              92.6|
+## Imagenet Commands
 
 ### Preparation
 ```bash

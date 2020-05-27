@@ -41,13 +41,6 @@ This runs inference on a single image.
 
 Open Image 10 Classes Commands
 
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   21.07|                 16.37|              94.0|               100|
-|LRE FP32 (baseline)|                   20.47|                 45.41|              94.0|               100|
-|LRE FP32 (storage) |                    5.14|                 44.71|              91.3|               100|
-|LRE Int8 (full)    |                    5.20|                 33.00|              13.3|                66|
-
 ### Preparation
 ```bash
 leip zoo download --model_id mobilenetv2 --variant_id keras-open-images-10-classes
@@ -88,13 +81,6 @@ leip evaluate --output_path mobilenetv2-oi/tfliteOutput/model_save/binuint8 --fr
 ```
 
 Imagenet Commands
-
-|       Mode        |Parameter file size (MB)|Speed (inferences/sec)|Top 1 Accuracy (%)|Top 5 Accuracy (%)|
-|-------------------|-----------------------:|---------------------:|-----------------:|-----------------:|
-|Original FP32      |                   14.62|                 27.55|              69.4|              89.8|
-|LRE FP32 (baseline)|                   14.03|                170.39|              69.4|              89.8|
-|LRE FP32 (storage) |                    3.53|                170.31|              62.1|              82.8|
-|LRE Int8 (full)    |                    3.59|                 72.45|               2.5|               5.5|
 
 ### Preparation
 ```bash
