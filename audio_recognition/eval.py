@@ -116,7 +116,7 @@ def main(_):
         tf.logging.info(
             'Checkpoint: {}'.format(FLAGS.checkpoint))
 
-    import seaborn as sns
+    # import seaborn as sns
 
     # var = [v for v in tf.trainable_variables() if v.name == "second_weights:0"][0]
     # ax = sns.distplot(var.eval())
@@ -132,13 +132,12 @@ def main(_):
 
 
     var = [v for v in tf.trainable_variables() if v.name == "final_fc_weights:0"][0]
-    ax = sns.distplot(var.eval())
-    ax.set_title('final_fc_weights', size=20)
-    fig = ax.get_figure()
-    fig.savefig('zoo tf-baseline final_fc_weights.png')
-
-    import pdb
-    pdb.set_trace()
+    # ax = sns.distplot(var.eval())
+    # ax.set_title('final_fc_weights', size=20)
+    # fig = ax.get_figure()
+    # fig.savefig('zoo tf-baseline final_fc_weights.png')
+    # import pdb
+    # pdb.set_trace()
     tf.logging.info('Training from step: {}'.format(start_step))
 
     set_size = audio_processor.set_size('testing')
@@ -174,7 +173,12 @@ def main(_):
                          columns=[i for i in audio_processor.words_list])
     plt.figure(figsize=(15, 7))
     sns_plot = sns.heatmap(df_cm, annot=True, annot_kws={"size": 5})
-    sns_plot.figure.savefig("eval_conf_matrix.png")
+    sns_plot.figure.savefig("eval_conf_matrix_baseline.png")
+
+    for num, (_, row) in enumerate(df_cm.iterrows()):
+        correct = row.iloc[num]
+        acc = correct / row.sum()
+        print('For {} accuracy is : {}'.format(row.index[num], round(acc, 3)))
 
 
     tf.compat.v1.logging.info('Confusion Matrix:\n %s' % (total_conf_matrix))
